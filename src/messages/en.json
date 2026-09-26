@@ -1,105 +1,245 @@
 {
   "Navigation": {
     "home": "Home",
-    "about": "About Us",
+    "about": "About",
     "products": "Products",
     "quality": "Quality",
     "projects": "Projects",
     "gallery": "Gallery",
-    "articles": "Blog",
-    "contact": "Contact Us",
-    "quote": "Request a Quote"
+    "contact": "Contact",
+    "quote": "Request a Quote",
+    "menu": "Open navigation",
+    "close": "Close navigation",
+    "language": "التبديل إلى العربية"
   },
-
-  "General": {
-    "brand": "Al-Hilal"
+  "Common": {
+    "brand": "Al-Hilal",
+    "eyebrow": "Al-Hilal Building Materials",
+    "products": "Products",
+    "learnMore": "Learn more",
+    "viewProducts": "Explore products",
+    "requestQuote": "Request a quote",
+    "viewProjects": "View projects",
+    "contact": "Contact",
+    "dimensions": "Size as listed in profile",
+    "weight": "Weight",
+    "density": "Density",
+    "type": "Production method",
+    "kg": "kg",
+    "kgM3": "kg/m³",
+    "illustration": "Illustrative view of the product family; use written specifications for your inquiry",
+    "noPhoto": "Technical specifications",
+    "seeAll": "View all"
   },
-
   "Hero": {
-    "requestQuote": "Request a Quote",
-    "exploreProducts": "Explore Products",
-
-    "factory": {
-      "title": "Building materials engineered for stronger projects.",
-      "description": "Al-Hilal delivers reliable building material solutions for residential, commercial, industrial and infrastructure projects.",
-      "alt": "Al-Hilal building materials factory"
-    },
-
-    "production": {
-      "title": "Manufacturing built around quality and consistency.",
-      "description": "Controlled production processes help us deliver dependable products with consistent quality for demanding construction projects.",
-      "alt": "Al-Hilal manufacturing process"
-    },
-
-    "products": {
-      "title": "Building solutions designed to perform.",
-      "description": "From red clay bricks to concrete products, curb stones and interlock, Al-Hilal provides solutions for a wide range of construction projects.",
-      "alt": "Al-Hilal building products"
-    }
+    "eyebrow": "Building materials for major projects",
+    "title": "Clay bricks and concrete products for your project.",
+    "description": "Red clay bricks, concrete blocks, curb stones and interlock paving, with a focus on manufacturing quality and the needs of contractors and projects.",
+    "secondary": "Explore products",
+    "caption": "Building materials / Project supply"
   },
-
   "Stats": {
-    "experience": "Years of Experience",
-    "capacity": "Maximum Production Capacity",
-    "projects": "Projects Supplied"
+    "production": "Modern production lines",
+    "supply": "Delivery directly to project sites",
+    "standards": "Focus on Egyptian and international standards"
   },
-
   "AboutHome": {
     "eyebrow": "About Al-Hilal",
-    "title": "Building trust, one brick at a time.",
-    "description": "For more than 30 years, Al-Hilal has delivered reliable building materials with consistent quality and specifications for residential, commercial, industrial and infrastructure projects.",
-    "experience": "Years of Experience",
-    "projects": "Projects Supplied",
-    "button": "Discover Al-Hilal",
-    "imageAlt": "Al-Hilal building materials factory"
+    "title": "Building products shaped around project needs.",
+    "description": "Al-Hilal's product range covers clay bricks, concrete products and blocks, curb stones and interlock paving. Its profile describes modern production lines and sites near raw materials and developing areas.",
+    "button": "About Al-Hilal",
+    "point1": "Clay and concrete bricks",
+    "point2": "Curbs and interlock paving",
+    "materialLabel": "AL-HILAL / MATERIALS"
   },
-
   "ProductCategories": {
-    "eyebrow": "Our Products",
-    "title": "Building solutions for every project.",
-    "description": "A diverse range of building materials manufactured for residential, commercial, industrial and infrastructure applications.",
-    "explore": "Explore Products",
-
-    "redBricks": {
-      "title": "Red Clay Bricks",
-      "description": "Precision-manufactured bricks for strength, dimensional consistency and dependable quality.",
-      "alt": "Al-Hilal red clay bricks"
-    },
-
-    "concreteBlocks": {
-      "title": "Concrete Blocks",
-      "description": "Concrete products designed for a wide range of construction applications.",
-      "alt": "Al-Hilal concrete blocks"
-    },
-
-    "curbStone": {
-      "title": "Curb Stones",
-      "description": "Solutions for roads, landscaping and infrastructure projects.",
-      "alt": "Al-Hilal curb stones"
-    },
-
-    "interlock": {
-      "title": "Interlock",
-      "description": "Durable paving solutions for residential, commercial and outdoor applications.",
-      "alt": "Al-Hilal interlock"
-    }
+    "eyebrow": "Product range",
+    "title": "From masonry units to paving.",
+    "description": "Four clear product families to help you select materials before requesting a quote.",
+    "clay": "Red clay bricks",
+    "concrete": "Concrete bricks and blocks",
+    "curb": "Curb stones",
+    "interlock": "Interlock paving"
   },
-
+  "Why": {
+    "eyebrow": "Why Al-Hilal",
+    "title": "A practical focus on project supply.",
+    "quality": "Product quality",
+    "qualityBody": "Attention to consistent products and the required specifications.",
+    "standards": "Specifications",
+    "standardsBody": "A focus on Egyptian and international standards.",
+    "week": "Service throughout the week",
+    "weekBody": "A full service across the week, as described in the company profile.",
+    "direct": "Factory-direct pricing",
+    "directBody": "Competitive prices directly from the factory.",
+    "delivery": "Site delivery",
+    "deliveryBody": "Orders delivered directly to the project site.",
+    "speed": "Fast fulfillment",
+    "speedBody": "Working to deliver orders as quickly as possible."
+  },
+  "Manufacturing": {
+    "eyebrow": "Production and supply",
+    "title": "From production lines to your project site.",
+    "description": "The company profile describes modern production lines and a location close to raw materials and new development areas. Different sizes and shapes are available across product families.",
+    "cta": "Explore quality standards"
+  },
+  "QualityShort": {
+    "eyebrow": "Quality",
+    "title": "Clear specifications for better choices.",
+    "description": "Dimensions and properties vary by product. Review the specifications from the profile and describe your project requirements in your quote request.",
+    "cta": "Explore quality"
+  },
+  "ProjectsShort": {
+    "eyebrow": "Project references",
+    "title": "Projects across new development areas.",
+    "description": "Selected client and project relationships that the owner confirmed may be attributed to Al-Hilal.",
+    "cta": "All projects"
+  },
   "QuoteCTA": {
-    "eyebrow": "Build With Al-Hilal",
-    "title": "Ready to start your next project?",
-    "description": "Send us your project requirements and connect with the Al-Hilal team to receive a quotation tailored to your needs.",
-    "quoteButton": "Request a Quote",
-    "contactButton": "Contact Us"
+    "eyebrow": "Your next project step",
+    "title": "Specify the materials and sizes you need.",
+    "description": "Prepare a structured quote request with specifications, quantities and delivery location, then copy or share it with the Al-Hilal team.",
+    "quoteButton": "Prepare your request",
+    "contactButton": "Contact page"
   },
-
   "ContactHome": {
-    "eyebrow": "Contact Us",
-    "title": "Let's build your next project together.",
-    "description": "The Al-Hilal team is ready to answer your inquiries and help you select the right products and quantities for your project.",
-    "phoneTitle": "Call Us",
-    "whatsappTitle": "WhatsApp",
-    "emailTitle": "Email",
-    "addressTitle": "Factory Location"
+    "eyebrow": "Get in touch",
+    "title": "A clear inquiry begins with clear specifications.",
+    "description": "Al-Hilal's contact channels are still being confirmed. You can prepare, save or share your project requirements without automatic submission.",
+    "cta": "Prepare a request"
+  },
+  "AboutPage": {
+    "eyebrow": "About Al-Hilal",
+    "title": "Building materials for real construction needs.",
+    "lead": "Al-Hilal offers clay bricks, concrete bricks and blocks, curb stones and interlock paving for projects and contractors.",
+    "storyTitle": "Products for masonry and paving",
+    "story": "From masonry bricks to curb stones and interlock for exterior areas, Al-Hilal brings together product families with documented sizes and shapes to help teams identify materials for their projects.",
+    "productionTitle": "Production close to developing areas",
+    "production": "According to the company profile, production uses modern lines, with sites near raw materials, expanding urban areas and large projects.",
+    "visionTitle": "A focus on product quality",
+    "vision": "Attention to manufacturing quality and Egyptian and international specifications, alongside direct delivery to project sites."
+  },
+  "ProductsPage": {
+    "eyebrow": "Products",
+    "title": "Building materials catalogue",
+    "lead": "Explore product families and sizes documented in the company profile, then choose a product when preparing your request.",
+    "all": "All products",
+    "note": "Measurements are from the original profile; it does not state a length unit. Confirm final specifications before contracting.",
+    "interlockNote": "Various shapes, colors and sizes are available; describe what you need in the request.",
+    "curbNote": "Strength is specified against project requirements; no numerical value is published.",
+    "modelNote": "The 3D model illustrates the product family and does not guarantee the selected size.",
+    "countLabel": "PRODUCTS"
+  },
+  "QualityPage": {
+    "eyebrow": "Quality and specifications",
+    "title": "The right specification begins with the right product.",
+    "lead": "Al-Hilal's profile emphasizes product quality and Egyptian and international standards, and lists dimensions and properties for selected concrete products.",
+    "productionTitle": "Modern production lines",
+    "production": "The production lines serve local market demand and large projects, according to the profile.",
+    "specTitle": "Reviewable technical data",
+    "spec": "The catalogue lists dimensions, weights and densities where provided by the source. Each project's requirements should be reviewed in the quote request.",
+    "scopeTitle": "To the required specification",
+    "scope": "Curb stones are machine pressed and their strength depends on the required specification. We do not display undocumented test figures or certificates.",
+    "cta": "Review product specifications"
+  },
+  "ProjectsPage": {
+    "eyebrow": "Clients and projects",
+    "title": "Supply relationships documented in the profile.",
+    "lead": "The following names and projects appear in the supplied profile, and the owner confirmed they may be attributed to Al-Hilal. Supply scope, dates and quantities are not documented.",
+    "client": "Client",
+    "project": "Project"
+  },
+  "GalleryPage": {
+    "eyebrow": "Gallery",
+    "title": "Explore the materials up close.",
+    "lead": "Illustrative 3D clay brick models are available now. Official factory, production and project photography will be added when supplied.",
+    "factory": "Factory",
+    "production": "Production",
+    "products": "Products",
+    "projects": "Projects",
+    "unavailable": "No approved photographs are available for this category yet.",
+    "productView": "Clay brick shape preview",
+    "cta": "Review all products"
+  },
+  "ContactPage": {
+    "eyebrow": "Contact",
+    "title": "Start with the details of your project.",
+    "lead": "Prepare an inquiry with sizes, quantities and delivery location, then copy or share it. No contact channel is currently approved for publication.",
+    "nextTitle": "Prepare your inquiry",
+    "next": "Select products, project location and delivery requirements. You will receive structured text that you can copy or share; it is not submitted to the company.",
+    "cta": "Prepare a quote request"
+  },
+  "QuotePage": {
+    "eyebrow": "Request a quote",
+    "title": "Prepare an inquiry you can share.",
+    "lead": "Complete the required fields, then copy the inquiry or share it with an app on your device. Your information is not automatically sent to Al-Hilal.",
+    "privacy": "Your entries remain in this browser until you choose to copy or share them."
+  },
+  "QuoteForm": {
+    "name": "Full name",
+    "company": "Company",
+    "phone": "Phone number",
+    "whatsapp": "WhatsApp number",
+    "email": "Email address",
+    "projectName": "Project name",
+    "location": "Project location",
+    "category": "Product category",
+    "product": "Product",
+    "size": "Size",
+    "quantity": "Quantity",
+    "unit": "Quantity unit",
+    "delivery": "Delivery requirements",
+    "requirements": "Additional requirements",
+    "select": "Select",
+    "optional": "Optional",
+    "pieces": "Pieces",
+    "pallets": "Pallets",
+    "loads": "Truckloads",
+    "otherUnit": "Other",
+    "prepare": "Prepare inquiry text",
+    "preview": "Your quote request",
+    "copy": "Copy request",
+    "share": "Share request",
+    "copied": "Request copied. You can send it through your preferred channel.",
+    "copyFailed": "Automatic copying failed. Select and copy the text manually.",
+    "shareUnavailable": "Sharing is unavailable in this browser; you can copy the request.",
+    "error": "Review required fields and phone/email formatting.",
+    "shareTitle": "Quote request — Al-Hilal",
+    "generatedNotice": "This request is prepared for sharing and has not been sent to Al-Hilal.",
+    "phoneError": "Enter a valid phone number.",
+    "emailError": "Enter a valid email address."
+  },
+  "Viewer": {
+    "load": "View 3D model",
+    "loading": "Loading 3D model...",
+    "error": "The 3D model could not be displayed on this device; product specifications remain available below.",
+    "fallback": "Interactive product preview is unavailable.",
+    "reduced": "You can start the preview manually."
+  },
+  "Footer": {
+    "description": "Clay and concrete bricks, blocks, curb stones and interlock paving for construction projects.",
+    "quick": "Quick links",
+    "families": "Products",
+    "inquiry": "Quote requests",
+    "contactPending": "Contact details pending confirmation",
+    "copyright": "Al-Hilal. All rights reserved."
+  },
+  "Meta": {
+    "homeTitle": "Al-Hilal | Clay bricks and concrete products for projects",
+    "homeDescription": "Clay bricks, concrete blocks, curb stones and interlock paving for construction projects. Explore specifications and prepare a quote request.",
+    "aboutTitle": "About Al-Hilal",
+    "aboutDescription": "Explore Al-Hilal's product families and its approach to production and supply.",
+    "productsTitle": "Al-Hilal products and sizes",
+    "productsDescription": "Clay and concrete bricks, curbs and interlock with specifications drawn from the company profile.",
+    "qualityTitle": "Quality and specifications",
+    "qualityDescription": "Al-Hilal's approach to product quality and Egyptian and international standards.",
+    "projectsTitle": "Clients and projects",
+    "projectsDescription": "Client and project references documented in the Al-Hilal company profile.",
+    "galleryTitle": "Product gallery",
+    "galleryDescription": "Illustrative 3D previews of Al-Hilal red clay bricks.",
+    "contactTitle": "Contact Al-Hilal",
+    "contactDescription": "Prepare, copy and share the details of your project inquiry.",
+    "quoteTitle": "Request a quote",
+    "quoteDescription": "Prepare a building materials inquiry with sizes, quantities and delivery location."
   }
 }

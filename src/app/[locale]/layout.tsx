@@ -1,76 +1,66 @@
 import "../globals.css";
-
+import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { IBM_Plex_Sans_Arabic, Manrope } from "next/font/google";
 import { notFound } from "next/navigation";
-
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import { routing } from "@/i18n/routing";
+import { SITE } from "@/lib/constants";
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-  display: "swap",
-});
+type Props = { children: React.ReactNode; params: Promise<{ locale: string }> };
 
-const ibmPlexArabic = IBM_Plex_Sans_Arabic({
-  subsets: ["arabic"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-arabic",
-  display: "swap",
-});
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
-type Props = {
-  children: React.ReactNode;
-  params: Promise<{
-    locale: string;
-  }>;
-};
-
-export const metadata = {
-  title: {
-    default: "Al-Hilal",
-    template: "%s | Al-Hilal",
-  },
-
-  description:
-    "Al-Hilal Building Materials Factory - Red Clay Bricks, Concrete Blocks, Curb Stones and Interlock.",
-
-  applicationName: "Al-Hilal",
-};
-
-export default async function LocaleLayout({
-  children,
+export async function generateMetadata({
   params,
-}: Props) {
+}: Pick<Props, "params">): Promise<Metadata> {
   const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) return {};
+  return {
+    metadataBase: SITE.url ? new URL(SITE.url) : undefined,
+    applicationName: SITE.name[locale],
+  };
+}
 
-  if (!hasLocale(routing.locales, locale)) {
-    notFound();
-  }
-
+export default async function LocaleLayout({ children, params }: Props) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
   const messages = await getMessages();
-
-  const direction = locale === "ar" ? "rtl" : "ltr";
-
+  const structured = SITE.url
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: SITE.name[locale],
+        url: SITE.url,
+        logo: `${SITE.url.replace(/\/$/, "")}/brand/logo/al-hilal-logo.png`,
+      }
+    : null;
   return (
-   <html
-  lang={locale}
-  dir={direction}
-  data-scroll-behavior="smooth"
-  className={`${manrope.variable} ${ibmPlexArabic.variable}`}
->
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body>
+        {structured && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(structured).replace(/</g, "\\u003c"),
+            }}
+          />
+        )}
         <NextIntlClientProvider messages={messages}>
           <div className="flex min-h-screen flex-col">
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:absolute focus:z-[70] focus:bg-white focus:p-4"
+            >
+              {locale === "ar" ? "تخط إلى المحتوى" : "Skip to content"}
+            </a>
             <Header />
-
-            <main className="flex-1">
+            <main id="main" className="flex-1">
               {children}
             </main>
-
             <Footer />
           </div>
         </NextIntlClientProvider>

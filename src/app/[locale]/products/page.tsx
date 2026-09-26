@@ -1,102 +1,166 @@
-import { ArrowUpRight } from "lucide-react";
-import { getLocale } from "next-intl/server";
-
+import type { Metadata } from "next";
+import { getLocale, getTranslations } from "next-intl/server";
+import PageIntro from "@/components/ui/PageIntro";
 import Product3DViewer from "@/components/products/Product3DViewer";
 import { Link } from "@/i18n/navigation";
+import { categories } from "@/lib/constants";
 import { products } from "@/lib/products";
-
+import { routeMetadata } from "@/lib/metadata";
+export async function generateMetadata(): Promise<Metadata> {
+  return routeMetadata("products");
+}
 export default async function ProductsPage() {
-  const locale = await getLocale();
-  const isArabic = locale === "ar";
-
+  const locale = (await getLocale()) as "ar" | "en";
+  const t = await getTranslations("ProductsPage");
+  const cats = await getTranslations("ProductCategories");
+  const c = await getTranslations("Common");
   return (
-    <section className="bg-background py-16 md:py-20 lg:py-24">
-      <div className="mx-auto w-full max-w-[1280px] px-5 md:px-8 lg:px-10">
-
-        {/* Heading */}
-        <div className={isArabic ? "text-right" : "text-left"}>
-          <p className="mb-4 text-2xl font-bold text-gold md:text-3xl">
-            {isArabic ? "منتجاتنا" : "Our Products"}
-          </p>
-
-          <h1 className="max-w-4xl text-4xl font-bold leading-[1.1] text-primary md:text-5xl lg:text-[60px]">
-            {isArabic
-              ? "أول منتجات الطوب الأحمر ثلاثية الأبعاد"
-              : "Our First 3D Red Clay Brick Products"}
-          </h1>
-
-          <p className="mt-5 max-w-3xl text-base leading-8 text-muted-foreground md:text-lg">
-            {isArabic
-              ? "يمكن للعميل تدوير المنتج 360 درجة ومعاينته من جميع الزوايا مباشرة داخل الموقع."
-              : "Customers can rotate each product 360 degrees and inspect it interactively from every angle directly on the website."}
-          </p>
-        </div>
-
-        {/* Products Grid */}
-        <div className="mt-12 grid gap-8 lg:grid-cols-2">
-          {products.map((product) => (
-            <article
-              key={product.id}
-              className="overflow-hidden rounded-[12px] border border-border bg-surface"
+    <>
+      <PageIntro eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
+      <div className="sticky top-[80px] z-30 border-b border-border bg-background/95 backdrop-blur">
+        <nav
+          className="page-container flex gap-2 overflow-x-auto py-3"
+          aria-label={t("title")}
+        >
+          <a
+            href="#all"
+            className="min-h-11 shrink-0 rounded-md border border-border px-4 py-2 text-sm font-semibold hover:border-brick"
+          >
+            {t("all")}
+          </a>
+          {categories.map((key) => (
+            <a
+              key={key}
+              href={`#${key}`}
+              className="min-h-11 shrink-0 rounded-md border border-border px-4 py-2 text-sm font-semibold hover:border-brick"
             >
-              <Product3DViewer
-                src={product.modelSrc}
-                alt={isArabic ? product.name.ar : product.name.en}
-              />
-
-              <div className="p-6 md:p-7">
-                <p className="text-sm font-semibold text-gold">
-                  {isArabic ? product.category.ar : product.category.en}
-                </p>
-
-                <h2 className="mt-3 text-2xl font-bold text-primary md:text-3xl">
-                  {isArabic ? product.name.ar : product.name.en}
-                </h2>
-
-                <p className="mt-4 text-sm leading-7 text-muted-foreground md:text-base">
-                  {isArabic
-                    ? product.description.ar
-                    : product.description.en}
-                </p>
-
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <div className="rounded-[6px] bg-muted px-4 py-2 text-sm font-medium text-primary">
-                    {isArabic
-                      ? `عدد الفتحات: ${product.holes}`
-                      : `Holes: ${product.holes}`}
-                  </div>
-
-                  <div className="rounded-[6px] bg-muted px-4 py-2 text-sm font-medium text-primary">
-                    {isArabic ? "3D Model" : "3D Model"}
-                  </div>
-                </div>
-
-                <div className="mt-7 flex flex-wrap gap-4">
-                  <Link
-                    href="/request-quote"
-                    className="group inline-flex min-h-12 items-center gap-3 rounded-[6px] bg-gold px-6 py-3 font-semibold text-white transition hover:brightness-110"
-                  >
-                    {isArabic ? "اطلب عرض سعر" : "Request a Quote"}
-
-                    <ArrowUpRight
-                      size={18}
-                      className="transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    />
-                  </Link>
-
-                  <Link
-                    href="/contact"
-                    className="inline-flex min-h-12 items-center rounded-[6px] border border-primary px-6 py-3 font-semibold text-primary transition hover:bg-primary hover:text-white"
-                  >
-                    {isArabic ? "تواصل معنا" : "Contact Us"}
-                  </Link>
-                </div>
+              {cats(key)}
+            </a>
+          ))}
+        </nav>
+      </div>
+      <div id="all" className="section-space bg-background">
+        <div className="page-container">
+          <p className="mb-10 max-w-3xl border-s-2 border-brick ps-5 text-sm leading-7 text-muted-foreground">
+            {t("note")}
+          </p>
+          {categories.map((category) => (
+            <section
+              key={category}
+              id={category}
+              className="mb-20 scroll-mt-40 last:mb-0"
+            >
+              <div className="mb-7 flex flex-wrap items-baseline justify-between gap-3 border-b border-border pb-4">
+                <h2 className="text-3xl font-bold">{cats(category)}</h2>
+                <span className="eyebrow" dir="ltr">
+                  {String(
+                    products.filter((x) => x.category === category).length,
+                  ).padStart(2, "0")}{" "}
+                  / {t("countLabel")}
+                </span>
               </div>
-            </article>
+              <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                {products
+                  .filter((x) => x.category === category)
+                  .map((product) => (
+                    <article
+                      key={product.id}
+                      className="flex min-w-0 flex-col overflow-hidden border border-border bg-surface"
+                    >
+                      {product.modelSrc ? (
+                        <Product3DViewer
+                          src={product.modelSrc}
+                          alt={product.name[locale]}
+                        />
+                      ) : (
+                        <div className="relative flex h-44 flex-col justify-end overflow-hidden border-b border-border bg-muted p-6">
+                          <div
+                            className="industrial-grid absolute inset-0 opacity-30"
+                            aria-hidden="true"
+                          />
+                          <span className="relative text-sm font-semibold text-muted-foreground">
+                            {c("noPhoto")}
+                          </span>
+                          <strong className="relative mt-2 text-xl">
+                            {cats(category)}
+                          </strong>
+                        </div>
+                      )}
+                      <div className="flex flex-1 flex-col p-6">
+                        <p className="eyebrow">{cats(category)}</p>
+                        <h3 className="mt-3 text-2xl font-bold">
+                          {product.name[locale]}
+                        </h3>
+                        <dl className="mt-6 border-t border-border text-sm">
+                          {product.dimensions && (
+                            <div className="flex flex-wrap justify-between gap-2 border-b border-border py-3">
+                              <dt className="text-muted-foreground">
+                                {c("dimensions")}
+                              </dt>
+                              <dd dir="ltr" className="font-bold">
+                                {product.dimensions}
+                              </dd>
+                            </div>
+                          )}
+                          {product.weightKg && (
+                            <div className="flex justify-between gap-2 border-b border-border py-3">
+                              <dt className="text-muted-foreground">
+                                {c("weight")}
+                              </dt>
+                              <dd dir="ltr">
+                                {product.weightKg} {c("kg")}
+                              </dd>
+                            </div>
+                          )}
+                          {product.densityKgM3 && (
+                            <div className="flex justify-between gap-2 border-b border-border py-3">
+                              <dt className="text-muted-foreground">
+                                {c("density")}
+                              </dt>
+                              <dd dir="ltr">
+                                {product.densityKgM3} {c("kgM3")}
+                              </dd>
+                            </div>
+                          )}
+                          {product.manufacturingType && (
+                            <div className="flex justify-between gap-2 border-b border-border py-3">
+                              <dt className="text-muted-foreground">
+                                {c("type")}
+                              </dt>
+                              <dd>{product.manufacturingType[locale]}</dd>
+                            </div>
+                          )}
+                        </dl>
+                        {product.modelSrc && (
+                          <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                            {t("modelNote")}
+                          </p>
+                        )}
+                        <Link
+                          href={`/request-quote?product=${encodeURIComponent(product.slug)}`}
+                          className="mt-auto inline-flex min-h-12 items-center justify-center rounded-md bg-primary px-5 py-3 font-semibold text-white hover:bg-secondary"
+                          style={{ marginTop: "auto" }}
+                        >
+                          {c("requestQuote")}
+                        </Link>
+                      </div>
+                    </article>
+                  ))}
+              </div>
+              {category === "interlock" && (
+                <p className="mt-5 text-sm text-muted-foreground">
+                  {t("interlockNote")}
+                </p>
+              )}
+              {category === "curb" && (
+                <p className="mt-5 text-sm text-muted-foreground">
+                  {t("curbNote")}
+                </p>
+              )}
+            </section>
           ))}
         </div>
-
       </div>
-    </section>
+    </>
   );
 }

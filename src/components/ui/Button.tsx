@@ -13,8 +13,7 @@ const variants: Record<ButtonVariant, string> = {
   secondary:
     "bg-transparent text-primary border border-primary hover:bg-primary hover:text-primary-foreground",
 
-  gold:
-    "bg-gold text-white border border-gold hover:brightness-95",
+  gold: "bg-gold text-primary border border-gold hover:brightness-95",
 };
 
 export default function Button({

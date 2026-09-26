@@ -1,74 +1,64 @@
 "use client";
-
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link, usePathname } from "@/i18n/navigation";
+import { navigationItems } from "@/lib/constants";
 
-import { Link } from "@/i18n/navigation";
-import { navigationItems } from "@/lib/navigation";
-
-type Props = {
-  light?: boolean;
-};
-
-export default function MobileMenu({
-  light = false,
-}: Props) {
+export default function MobileMenu() {
   const [open, setOpen] = useState(false);
   const t = useTranslations("Navigation");
-
+  const pathname = usePathname();
+  useEffect(() => {
+    if (!open) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, [open]);
   return (
-    <div className="lg:hidden">
-
+    <div className="xl:hidden">
       <button
         type="button"
-        aria-label="Toggle navigation menu"
+        aria-label={open ? t("close") : t("menu")}
+        aria-expanded={open}
+        aria-controls="mobile-navigation"
         onClick={() => setOpen(!open)}
-        className={`
-          flex h-11 w-11 cursor-pointer
-          items-center justify-center
-          rounded-[6px]
-          border
-          transition
-          ${
-            light
-              ? "border-white/40 text-white"
-              : "border-border text-primary"
-          }
-        `}
+        className="flex h-11 w-11 items-center justify-center rounded-md border border-border text-primary"
       >
         {open ? <X size={23} /> : <Menu size={23} />}
       </button>
-
       {open && (
-        <div className="absolute left-0 right-0 top-full border-t border-border bg-background shadow-xl">
-
-          <nav className="mx-auto flex max-w-[1280px] flex-col px-5 py-6">
-
+        <div
+          id="mobile-navigation"
+          className="absolute inset-x-0 top-full max-h-[calc(100svh-80px)] overflow-y-auto border-t border-border bg-background shadow-xl"
+        >
+          <nav
+            aria-label={t("menu")}
+            className="page-container flex flex-col py-4"
+          >
             {navigationItems.map((item) => (
               <Link
                 key={item.key}
                 href={item.href}
+                aria-current={pathname === item.href ? "page" : undefined}
                 onClick={() => setOpen(false)}
-                className="border-b border-border py-4 text-base font-semibold text-primary"
+                className="flex min-h-12 items-center border-b border-border text-base font-semibold"
               >
                 {t(item.key)}
               </Link>
             ))}
-
             <Link
               href="/request-quote"
               onClick={() => setOpen(false)}
-              className="mt-5 flex min-h-12 items-center justify-center rounded-[6px] bg-primary px-5 text-center font-semibold text-white"
+              className="mt-4 flex min-h-12 items-center justify-center rounded-md bg-primary p-3 font-semibold text-white"
             >
               {t("quote")}
             </Link>
-
           </nav>
-
         </div>
       )}
-
     </div>
   );
 }

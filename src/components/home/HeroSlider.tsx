@@ -1,241 +1,82 @@
-"use client";
-
-import {
-    AnimatePresence,
-    motion,
-    useReducedMotion,
-} from "framer-motion";
-import {
-    ArrowUpRight,
-    ChevronLeft,
-    ChevronRight,
-} from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Link } from "@/i18n/navigation";
 
-const SLIDE_DURATION = 4000;
-
-const slides = [
-  {
-    type: "image",
-    src: "/images/hero/hero-1.png",
-    key: "factory",
-  },
-  {
-    type: "video",
-    src: "/images/hero/hero-2.mp4",
-    key: "production",
-  },
-  {
-    type: "image",
-    src: "/images/hero/hero-3.jpg",
-    key: "products",
-  },
-] as const;
-
-export default function HeroSlider() {
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  const t = useTranslations("Hero");
-  const locale = useLocale();
-  const reduceMotion = useReducedMotion();
-
-  const isArabic = locale === "ar";
-  const slide = slides[activeSlide];
-
-  useEffect(() => {
-    if (reduceMotion) return;
-
-    const timer = window.setTimeout(() => {
-      setActiveSlide((current) => (current + 1) % slides.length);
-    }, SLIDE_DURATION);
-
-    return () => window.clearTimeout(timer);
-  }, [activeSlide, reduceMotion]);
-
-  function nextSlide() {
-    setActiveSlide((current) => (current + 1) % slides.length);
-  }
-
-  function previousSlide() {
-    setActiveSlide(
-      (current) => (current - 1 + slides.length) % slides.length
-    );
-  }
-
+// The original slider requested media files that were never supplied.
+// This single editorial composition uses only the approved brand asset.
+export default async function HeroSlider() {
+  const t = await getTranslations("Hero");
+  const common = await getTranslations("Common");
+  const cats = await getTranslations("ProductCategories");
   return (
-    <section className="relative min-h-[100svh] overflow-hidden bg-primary">
-
-      {/* Background media */}
-      <AnimatePresence mode="sync">
-        <motion.div
-          key={slide.src}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.65,
-            ease: "easeInOut",
-          }}
-          className="absolute inset-0"
-        >
-          {slide.type === "image" ? (
-            <motion.div
-              initial={{ scale: 1 }}
-              animate={{
-                scale: reduceMotion ? 1 : 1.04,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 4,
-                ease: "linear",
-              }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={slide.src}
-                alt={t(`${slide.key}.alt`)}
-                fill
-                priority={activeSlide === 0}
-                sizes="100vw"
-                className="object-cover"
-              />
-            </motion.div>
-          ) : (
-            <video
-              key={slide.src}
-              autoPlay
-              muted
-              playsInline
-              preload="auto"
-              className="absolute inset-0 h-full w-full object-cover"
-            >
-              <source src={slide.src} type="video/mp4" />
-            </video>
-          )}
-        </motion.div>
-      </AnimatePresence>
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/45" />
-
+    <section className="relative overflow-hidden bg-primary text-white">
       <div
-        className={`absolute inset-0 ${
-          isArabic
-            ? "bg-gradient-to-l from-black/65 via-black/25 to-transparent"
-            : "bg-gradient-to-r from-black/65 via-black/25 to-transparent"
-        }`}
+        className="industrial-grid pointer-events-none absolute inset-0 opacity-20"
+        aria-hidden="true"
       />
-
-      {/* Hero content */}
-      <div className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[1280px] items-end px-5 pb-24 pt-36 md:px-8 md:pb-28 lg:px-10 lg:pb-32">
-
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`${slide.key}-content`}
-            initial={{
-              opacity: 0,
-              y: reduceMotion ? 0 : 22,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            exit={{
-              opacity: 0,
-              y: reduceMotion ? 0 : -12,
-            }}
-            transition={{
-              duration: reduceMotion ? 0 : 0.5,
-            }}
-            className="max-w-4xl"
-          >
-            <p className="mb-5 text-sm font-bold uppercase tracking-[0.25em] text-gold">
-              AL-HILAL
-            </p>
-
-            <h1 className="max-w-4xl text-4xl font-bold leading-[1.05] text-white md:text-6xl lg:text-[72px]">
-              {t(`${slide.key}.title`)}
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-base leading-8 text-white/80 md:text-lg">
-              {t(`${slide.key}.description`)}
-            </p>
-
-            <div className="mt-9 flex flex-wrap gap-4">
-
-              <Link
-                href="/request-quote"
-                className="group inline-flex min-h-12 items-center gap-3 rounded-[6px] bg-gold px-6 py-3 font-semibold text-white transition hover:brightness-110"
-              >
-                {t("requestQuote")}
-
-                <ArrowUpRight
-                  size={19}
-                  className="transition-transform group-hover:-translate-y-0.5"
-                />
-              </Link>
-
-              <Link
-                href="/products"
-                className="inline-flex min-h-12 items-center rounded-[6px] border border-white/60 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white hover:text-primary"
-              >
-                {t("exploreProducts")}
-              </Link>
-
-            </div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Controls */}
-        <div className="absolute bottom-8 left-5 right-5 flex items-center justify-between md:left-8 md:right-8 lg:left-10 lg:right-10">
-
-          <div className="flex items-center gap-2">
-            {slides.map((item, index) => (
-              <button
-                key={item.src}
-                type="button"
-                aria-label={`Go to slide ${index + 1}`}
-                onClick={() => setActiveSlide(index)}
-                className={`h-[3px] cursor-pointer transition-all duration-300 ${
-                  index === activeSlide
-                    ? "w-12 bg-gold"
-                    : "w-7 bg-white/40 hover:bg-white/70"
-                }`}
-              />
-            ))}
-          </div>
-
-          <div className="flex gap-2">
-            <button
-              type="button"
-              aria-label="Previous slide"
-              onClick={previousSlide}
-              className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/40 text-white transition hover:border-white hover:bg-white hover:text-primary"
+      <div className="relative mx-auto grid min-h-[620px] max-w-[1280px] items-stretch lg:grid-cols-[1.15fr_.85fr]">
+        <div className="flex flex-col justify-center px-5 pb-16 pt-32 md:px-8 lg:py-32 lg:ps-10 lg:pe-16">
+          <p className="mb-5 flex items-center gap-3 text-sm font-bold text-[#e2b95f]">
+            <span className="h-px w-9 bg-[#e2b95f]" />
+            {t("eyebrow")}
+          </p>
+          <h1 className="max-w-[780px] text-[clamp(2.55rem,5vw,4.7rem)] leading-[1.17] font-bold text-white">
+            {t("title")}
+          </h1>
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-white/80">
+            {t("description")}
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Link
+              href="/request-quote"
+              className="inline-flex min-h-12 items-center gap-3 rounded-md bg-[#b58a32] px-6 py-3 font-bold text-[#171717] transition hover:bg-[#d4ac51]"
             >
-              {isArabic ? (
-                <ChevronRight size={20} />
-              ) : (
-                <ChevronLeft size={20} />
-              )}
-            </button>
-
-            <button
-              type="button"
-              aria-label="Next slide"
-              onClick={nextSlide}
-              className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/40 text-white transition hover:border-white hover:bg-white hover:text-primary"
+              {common("requestQuote")}
+              <ArrowUpRight size={19} />
+            </Link>
+            <Link
+              href="/products"
+              className="inline-flex min-h-12 items-center rounded-md border border-white/55 px-6 py-3 font-semibold transition hover:bg-white hover:text-primary"
             >
-              {isArabic ? (
-                <ChevronLeft size={20} />
-              ) : (
-                <ChevronRight size={20} />
-              )}
-            </button>
+              {t("secondary")}
+            </Link>
           </div>
-
+          <p className="mt-14 text-sm tracking-wide text-white/55">
+            {t("caption")}
+          </p>
+        </div>
+        <div className="relative isolate flex min-h-[460px] flex-col justify-center overflow-hidden border-t border-white/15 bg-[#262524] p-5 md:p-9 lg:min-h-[620px] lg:border-s lg:border-t-0">
+          <div
+            className="absolute -end-20 -top-32 h-80 w-80 rounded-full border border-white/10"
+            aria-hidden="true"
+          />
+          <div className="relative mx-auto mb-8 h-48 w-48 md:h-56 md:w-56">
+            <Image
+              src="/brand/logo/al-hilal-logo.png"
+              alt={common("brand")}
+              fill
+              priority
+              sizes="(max-width: 768px) 192px, 224px"
+              className="object-contain"
+            />
+          </div>
+          <div className="relative grid grid-cols-2 border-t border-s border-white/20">
+            {(["clay", "concrete", "curb", "interlock"] as const).map(
+              (key, i) => (
+                <div
+                  key={key}
+                  className="flex min-h-24 flex-col justify-between border-e border-b border-white/20 p-4 text-sm md:p-5"
+                >
+                  <span className="text-[#d6ac51]" dir="ltr">
+                    0{i + 1}
+                  </span>
+                  <span className="font-semibold leading-6">{cats(key)}</span>
+                </div>
+              ),
+            )}
+          </div>
         </div>
       </div>
     </section>

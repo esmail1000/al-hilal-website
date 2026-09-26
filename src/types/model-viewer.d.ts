@@ -1,6 +1,6 @@
 import type * as React from "react";
 
-declare global {
+declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
       "model-viewer": React.DetailedHTMLProps<
@@ -9,9 +9,7 @@ declare global {
       > & {
         src?: string;
         alt?: string;
-        poster?: string;
-        ar?: boolean;
-        autoplay?: boolean;
+        loading?: "lazy" | "eager";
         "camera-controls"?: boolean;
         "auto-rotate"?: boolean;
         "shadow-intensity"?: string;
@@ -19,11 +17,8 @@ declare global {
         "environment-image"?: string;
         "interaction-prompt"?: string;
         "rotation-per-second"?: string;
-        "touch-action"?: string;
         style?: React.CSSProperties;
       };
     }
   }
 }
-
-export { };

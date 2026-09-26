@@ -1,4 +1,10 @@
 @import "tailwindcss";
+@import "@fontsource/manrope/400.css";
+@import "@fontsource/manrope/600.css";
+@import "@fontsource/manrope/700.css";
+@import "@fontsource/ibm-plex-sans-arabic/400.css";
+@import "@fontsource/ibm-plex-sans-arabic/600.css";
+@import "@fontsource/ibm-plex-sans-arabic/700.css";
 
 /* ========================================
    Al-Hilal Design System
@@ -45,7 +51,6 @@
   --transition-slow: 500ms;
 }
 
-
 /* ========================================
    Tailwind Design Tokens
    ======================================== */
@@ -79,7 +84,6 @@
   --font-arabic: var(--font-arabic);
 }
 
-
 /* ========================================
    Base
    ======================================== */
@@ -106,7 +110,6 @@ body {
 html[lang="ar"] body {
   font-family: var(--font-arabic), Arial, sans-serif;
 }
-
 
 /* ========================================
    Typography
@@ -142,7 +145,6 @@ a {
   text-decoration: none;
 }
 
-
 /* ========================================
    Accessibility
    ======================================== */
@@ -161,7 +163,6 @@ button {
   font: inherit;
 }
 
-
 /* ========================================
    Selection
    ======================================== */
@@ -170,7 +171,6 @@ button {
   background: var(--color-gold);
   color: #ffffff;
 }
-
 
 /* ========================================
    Reduced Motion
@@ -187,5 +187,53 @@ button {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+:root {
+  --font-manrope: "Manrope";
+  --font-arabic: "IBM Plex Sans Arabic";
+}
+body {
+  overflow-x: clip;
+}
+.page-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+.section-space {
+  padding-block: clamp(64px, 7.5vw, 112px);
+}
+.section-title {
+  font-size: clamp(2.25rem, 3.7vw, 3.4rem);
+  line-height: 1.2;
+  font-weight: 700;
+}
+.eyebrow {
+  color: #a64b2a;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.text-link {
+  color: #8c3d21;
+  font-weight: 700;
+  gap: 0.5rem;
+  border-bottom: 1px solid currentColor;
+}
+.industrial-grid {
+  background-image:
+    linear-gradient(to right, #74716b44 1px, transparent 1px),
+    linear-gradient(to bottom, #74716b44 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+@media (min-width: 768px) {
+  .page-container {
+    padding-inline: 32px;
+  }
+}
+@media (min-width: 1024px) {
+  .page-container {
+    padding-inline: 40px;
   }
 }

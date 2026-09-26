@@ -1,94 +1,38 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import { useTranslations } from "next-intl";
-
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
-export default function RequestQuoteCTA() {
-  const t = useTranslations("QuoteCTA");
-  const reduceMotion = useReducedMotion();
-
+export default async function RequestQuoteCTA() {
+  const t = await getTranslations("QuoteCTA");
   return (
-    <section className="relative min-h-[620px] overflow-hidden bg-primary">
-      {/* Background Video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        className="absolute inset-0 h-full w-full object-cover"
-      >
-        <source
-          src="/images/hero/hero-2.mp4"
-          type="video/mp4"
-        />
-      </video>
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/65" />
-
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/20" />
-
-      {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-[620px] w-full max-w-[1280px] items-center px-5 py-24 md:px-8 lg:px-10">
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: false,
-            amount: 0.35,
-          }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.7,
-          }}
-          className="max-w-4xl"
-        >
-          <p className="mb-5 text-xl font-bold text-gold md:text-2xl">
-            {t("eyebrow")}
-          </p>
-
-          <h2 className="max-w-4xl text-4xl font-bold leading-[1.1] text-white md:text-6xl lg:text-[68px]">
+    <section className="relative overflow-hidden bg-primary py-20 text-white md:py-28">
+      <div
+        className="industrial-grid pointer-events-none absolute inset-0 opacity-15"
+        aria-hidden="true"
+      />
+      <div className="page-container relative grid gap-9 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div>
+          <p className="eyebrow text-[#e2b95f]">{t("eyebrow")}</p>
+          <h2 className="section-title mt-4 max-w-3xl text-white">
             {t("title")}
           </h2>
-
-          <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 md:text-lg">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">
             {t("description")}
           </p>
-
-          <div className="mt-9 flex flex-wrap gap-4">
-
-            <Link
-              href="/request-quote"
-              className="group inline-flex min-h-12 items-center gap-3 rounded-[6px] bg-gold px-7 py-3 font-semibold text-white transition hover:brightness-110"
-            >
-              {t("quoteButton")}
-
-              <ArrowUpRight
-                size={19}
-                className="transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1"
-              />
-            </Link>
-
-            <Link
-              href="/contact"
-              className="inline-flex min-h-12 items-center rounded-[6px] border border-white/50 bg-white/5 px-7 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white hover:text-primary"
-            >
-              {t("contactButton")}
-            </Link>
-
-          </div>
-        </motion.div>
-
+        </div>
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href="/request-quote"
+            className="inline-flex min-h-12 items-center rounded-md bg-[#b58a32] px-6 py-3 font-bold text-primary hover:bg-[#d4ac51]"
+          >
+            {t("quoteButton")}
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex min-h-12 items-center rounded-md border border-white/60 px-6 py-3 font-semibold hover:bg-white hover:text-primary"
+          >
+            {t("contactButton")}
+          </Link>
+        </div>
       </div>
     </section>
   );
