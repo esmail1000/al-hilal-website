@@ -16,8 +16,9 @@ export default function LanguageSwitcher() {
       type="button"
       aria-label={t("language")}
       onClick={changeLanguage}
-      className="min-h-11 rounded-md border border-border px-3 text-sm font-bold text-primary transition hover:bg-muted"
+      className={`min-h-11 rounded-md border border-border px-3 text-sm font-bold text-primary transition hover:bg-muted ${locale === "en" ? "font-arabic" : ""}`}
       lang={locale === "ar" ? "en" : "ar"}
+      dir={locale === "en" ? "rtl" : "ltr"}
     >
       {locale === "ar" ? "EN" : "العربية"}
     </button>
