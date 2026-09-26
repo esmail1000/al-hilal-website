@@ -33,15 +33,34 @@
   },
   "Hero": {
     "eyebrow": "Building materials for major projects",
-    "title": "Clay bricks and concrete products for your project.",
-    "description": "Red clay bricks, concrete blocks, curb stones and interlock paving, with a focus on manufacturing quality and the needs of contractors and projects.",
     "secondary": "Explore products",
-    "caption": "Building materials / Project supply"
+    "carousel": "carousel",
+    "carouselControls": "Carousel controls",
+    "slideNumber": "Slide {number}",
+    "previous": "Previous slide",
+    "next": "Next slide",
+    "pause": "Pause automatic slide rotation",
+    "play": "Resume automatic slide rotation",
+    "factory": {
+      "title": "Building materials for major projects.",
+      "description": "Clay bricks, concrete products, curb stones and interlock for contractors and project sites."
+    },
+    "production": {
+      "title": "Manufacturing for project requirements.",
+      "description": "Modern production lines with attention to product quality and Egyptian and international specifications."
+    },
+    "products": {
+      "title": "From clay bricks to building and paving products.",
+      "description": "A range of red clay bricks, blocks, curbs and interlock, with delivery directly to project sites."
+    }
   },
   "Stats": {
     "production": "Modern production lines",
     "supply": "Delivery directly to project sites",
     "standards": "Focus on Egyptian and international standards"
+  },
+  "Media": {
+    "enableVideo": "Play footage"
   },
   "AboutHome": {
     "eyebrow": "About Al-Hilal",
@@ -50,16 +69,24 @@
     "button": "About Al-Hilal",
     "point1": "Clay and concrete bricks",
     "point2": "Curbs and interlock paving",
-    "materialLabel": "AL-HILAL / MATERIALS"
+    "factoryShotOne": "Concrete block production line",
+    "factoryShotOneAlt": "Concrete blocks moving along a production line.",
+    "factoryShotTwo": "Concrete product forming process",
+    "factoryShotTwoAlt": "A concrete product forming process at the production site."
   },
   "ProductCategories": {
     "eyebrow": "Product range",
     "title": "From masonry units to paving.",
     "description": "Four clear product families to help you select materials before requesting a quote.",
+    "explore": "Explore products",
     "clay": "Red clay bricks",
+    "clayBody": "Red clay bricks in sizes documented in the company profile.",
     "concrete": "Concrete bricks and blocks",
+    "concreteBody": "Solid and hollow concrete products with documented dimensions and specifications.",
     "curb": "Curb stones",
-    "interlock": "Interlock paving"
+    "curbBody": "Garden, sidewalk and heavy-duty curb stones in different sizes and shapes.",
+    "interlock": "Interlock paving",
+    "interlockBody": "A range of shapes, sizes and colors for project requirements."
   },
   "Why": {
     "eyebrow": "Why Al-Hilal",
@@ -152,12 +179,20 @@
   "GalleryPage": {
     "eyebrow": "Gallery",
     "title": "Explore the materials up close.",
-    "lead": "Illustrative 3D clay brick models are available now. Official factory, production and project photography will be added when supplied.",
+    "lead": "Production and product footage, alongside illustrative 3D clay brick models.",
     "factory": "Factory",
     "production": "Production",
     "products": "Products",
     "projects": "Projects",
-    "unavailable": "No approved photographs are available for this category yet.",
+    "factoryOne": "Concrete block production line",
+    "factoryOneAlt": "Concrete blocks moving along a factory production line.",
+    "factoryTwo": "Forming concrete products",
+    "factoryTwoAlt": "A machine forming concrete products at the production site.",
+    "productionPhoto": "Concrete product manufacturing equipment",
+    "productionPhotoAlt": "Details of concrete manufacturing equipment in operation.",
+    "clayPhoto": "Red clay brick details",
+    "clayPhotoAlt": "A close-up view of red clay brick texture.",
+    "projectsNote": "Project relationships are listed as verified text on the Projects page; no approved project photos are available yet.",
     "productView": "Clay brick shape preview",
     "cta": "Review all products"
   },

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { navigationItems } from "@/lib/constants";
 
-export default function MobileMenu() {
+export default function MobileMenu({ light = false }: { light?: boolean }) {
   const [open, setOpen] = useState(false);
   const t = useTranslations("Navigation");
   const pathname = usePathname();
@@ -18,21 +18,25 @@ export default function MobileMenu() {
     return () => window.removeEventListener("keydown", close);
   }, [open]);
   return (
-    <div className="xl:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         aria-label={open ? t("close") : t("menu")}
         aria-expanded={open}
         aria-controls="mobile-navigation"
         onClick={() => setOpen(!open)}
-        className="flex h-11 w-11 items-center justify-center rounded-md border border-border text-primary"
+        className={`flex h-11 w-11 items-center justify-center rounded-md border transition ${
+          light
+            ? "border-white/45 text-white hover:bg-white hover:text-primary"
+            : "border-border text-primary hover:bg-muted"
+        }`}
       >
         {open ? <X size={23} /> : <Menu size={23} />}
       </button>
       {open && (
         <div
           id="mobile-navigation"
-          className="absolute inset-x-0 top-full max-h-[calc(100svh-80px)] overflow-y-auto border-t border-border bg-background shadow-xl"
+          className="absolute inset-x-0 top-full max-h-[calc(100svh-88px)] overflow-y-auto border-t border-border bg-background text-primary shadow-xl lg:max-h-[calc(100svh-92px)]"
         >
           <nav
             aria-label={t("menu")}
