@@ -1,0 +1,105 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "products": "Products",
+    "quality": "Quality",
+    "projects": "Projects",
+    "gallery": "Gallery",
+    "articles": "Blog",
+    "contact": "Contact Us",
+    "quote": "Request a Quote"
+  },
+
+  "General": {
+    "brand": "Al-Hilal"
+  },
+
+  "Hero": {
+    "requestQuote": "Request a Quote",
+    "exploreProducts": "Explore Products",
+
+    "factory": {
+      "title": "Building materials engineered for stronger projects.",
+      "description": "Al-Hilal delivers reliable building material solutions for residential, commercial, industrial and infrastructure projects.",
+      "alt": "Al-Hilal building materials factory"
+    },
+
+    "production": {
+      "title": "Manufacturing built around quality and consistency.",
+      "description": "Controlled production processes help us deliver dependable products with consistent quality for demanding construction projects.",
+      "alt": "Al-Hilal manufacturing process"
+    },
+
+    "products": {
+      "title": "Building solutions designed to perform.",
+      "description": "From red clay bricks to concrete products, curb stones and interlock, Al-Hilal provides solutions for a wide range of construction projects.",
+      "alt": "Al-Hilal building products"
+    }
+  },
+
+  "Stats": {
+    "experience": "Years of Experience",
+    "capacity": "Maximum Production Capacity",
+    "projects": "Projects Supplied"
+  },
+
+  "AboutHome": {
+    "eyebrow": "About Al-Hilal",
+    "title": "Building trust, one brick at a time.",
+    "description": "For more than 30 years, Al-Hilal has delivered reliable building materials with consistent quality and specifications for residential, commercial, industrial and infrastructure projects.",
+    "experience": "Years of Experience",
+    "projects": "Projects Supplied",
+    "button": "Discover Al-Hilal",
+    "imageAlt": "Al-Hilal building materials factory"
+  },
+
+  "ProductCategories": {
+    "eyebrow": "Our Products",
+    "title": "Building solutions for every project.",
+    "description": "A diverse range of building materials manufactured for residential, commercial, industrial and infrastructure applications.",
+    "explore": "Explore Products",
+
+    "redBricks": {
+      "title": "Red Clay Bricks",
+      "description": "Precision-manufactured bricks for strength, dimensional consistency and dependable quality.",
+      "alt": "Al-Hilal red clay bricks"
+    },
+
+    "concreteBlocks": {
+      "title": "Concrete Blocks",
+      "description": "Concrete products designed for a wide range of construction applications.",
+      "alt": "Al-Hilal concrete blocks"
+    },
+
+    "curbStone": {
+      "title": "Curb Stones",
+      "description": "Solutions for roads, landscaping and infrastructure projects.",
+      "alt": "Al-Hilal curb stones"
+    },
+
+    "interlock": {
+      "title": "Interlock",
+      "description": "Durable paving solutions for residential, commercial and outdoor applications.",
+      "alt": "Al-Hilal interlock"
+    }
+  },
+
+  "QuoteCTA": {
+    "eyebrow": "Build With Al-Hilal",
+    "title": "Ready to start your next project?",
+    "description": "Send us your project requirements and connect with the Al-Hilal team to receive a quotation tailored to your needs.",
+    "quoteButton": "Request a Quote",
+    "contactButton": "Contact Us"
+  },
+
+  "ContactHome": {
+    "eyebrow": "Contact Us",
+    "title": "Let's build your next project together.",
+    "description": "The Al-Hilal team is ready to answer your inquiries and help you select the right products and quantities for your project.",
+    "phoneTitle": "Call Us",
+    "whatsappTitle": "WhatsApp",
+    "emailTitle": "Email",
+    "addressTitle": "Factory Location"
+  }
+}
