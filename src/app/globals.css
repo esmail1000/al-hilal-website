@@ -157,3 +157,57 @@
     transition-duration: 0.01ms !important;
   }
 }
+/* ========================================
+   AL-HILAL PREMIUM BRAND RIBBON
+   ======================================== */
+
+.brand-ribbon-title {
+  text-shadow:
+    0 0 18px rgba(215, 165, 66, 0.18),
+    0 1px 0 rgba(0, 0, 0, 0.8);
+}
+
+.brand-ribbon-shine {
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(255, 231, 169, 0.03) 43%,
+    rgba(255, 231, 169, 0.14) 50%,
+    rgba(255, 231, 169, 0.03) 57%,
+    transparent 65%,
+    transparent 100%
+  );
+
+  transform: skewX(-18deg);
+  animation: alHilalRibbonShine 7s ease-in-out infinite;
+}
+
+@keyframes alHilalRibbonShine {
+  0%,
+  68% {
+    left: -40%;
+    opacity: 0;
+  }
+
+  72% {
+    opacity: 1;
+  }
+
+  88% {
+    left: 120%;
+    opacity: 1;
+  }
+
+  100% {
+    left: 120%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-ribbon-shine {
+    animation: none;
+    display: none;
+  }
+}
