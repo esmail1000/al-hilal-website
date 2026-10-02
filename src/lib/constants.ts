@@ -1,24 +1,38 @@
 export const SITE = {
-  name: { ar: "الهلال", en: "Al-Hilal" },
-  // Contact details in the supplied profile belong to the source company and are
-  // intentionally omitted until the owner provides Al-Hilal's current channels.
-  phones: [] as string[],
-  whatsapp: null as string | null,
-  email: null as string | null,
-  address: null as { ar: string; en: string } | null,
-  googleMapsUrl: null as string | null,
+  name: {
+    ar: "الهلال",
+    en: "Al-Hilal",
+  },
+
+  phones: [
+    "+20 10 96862828",
+    "+20 10 17400302",
+  ] as string[],
+
+  whatsapp: "+201096862828" as string | null,
+
+  email: "esmailasadd55@gamil.com" as string | null,
+
+  address: {
+    ar: "مركز الصف – المنطقة الصناعية",
+    en: "El Saff Center – Industrial Zone",
+  } as { ar: string; en: string } | null,
+
+  googleMapsUrl:
+    "https://maps.app.goo.gl/oviwLbg7deZNheG58" as string | null,
+
   workingHours: null as { ar: string; en: string } | null,
+
   social: [] as { name: string; href: string }[],
+
   url: process.env.NEXT_PUBLIC_SITE_URL || null,
 } as const;
-
 export const navigationItems = [
   { key: "home", href: "/" },
   { key: "about", href: "/about" },
   { key: "products", href: "/products" },
   { key: "quality", href: "/quality" },
   { key: "projects", href: "/projects" },
-  { key: "gallery", href: "/gallery" },
   { key: "contact", href: "/contact" },
 ] as const;
 
